@@ -19,111 +19,106 @@ body { background:#f7fafc }
 <div class="card shadow-sm">
 <div class="card-body">
 
-<h4 class="fw-bold mb-2">Form Input KERTAS KERJA Update</h4>
+<h4 class="fw-bold mb-2">Form Input KERTAS KERJA</h4>
 <p class="text-muted">Data & bukti dukung tersimpan otomatis</p>
 
 <form id="kk-form" class="row g-3" enctype="multipart/form-data">
 
-<!-- IDENTITAS -->
-<div class="col-md-2"><label class="required">NO</label><input name="NO" type="number" class="form-control" required></div>
-<div class="col-md-4"><label class="required">SKPD</label><input name="SKPD" class="form-control" required></div>
-<div class="col-md-4"><label class="required">UNIT</label><input name="UNIT" class="form-control" required></div>
+<div class="col-md-2">
+  <label class="required">NO</label>
+  <input name="NO" type="number" class="form-control" required>
+</div>
 
-<!-- PROGRAM -->
+<div class="col-md-4">
+  <label class="required">SKPD</label>
+  <input name="SKPD" id="skpd" class="form-control" readonly required>
+</div>
+
+<div class="col-md-4">
+  <label class="required">UNIT</label>
+  <input name="UNIT" class="form-control" required>
+</div>
+
 <div class="col-md-6"><label class="required">PROGRAM</label><input name="PROGRAM" class="form-control" required></div>
 <div class="col-md-6"><label class="required">KEGIATAN</label><input name="KEGIATAN" class="form-control" required></div>
 <div class="col-md-6"><label class="required">SUB KEGIATAN</label><input name="SUB KEGIATAN" class="form-control" required></div>
 <div class="col-md-6"><label class="required">JUMLAH TERMIN</label><input name="JUMLAH TERMIN" type="number" class="form-control" required></div>
 
-<!-- DOKUMEN -->
 <div class="col-md-6"><label class="required">NAMA PPK</label><input name="NAMA PPK" class="form-control" required></div>
 <div class="col-md-6"><label class="required">NOMOR DOKUMEN</label><input name="NOMOR DOKUMEN" class="form-control" required></div>
 <div class="col-md-6"><label class="required">TGL DOKUMEN</label><input name="TGL DOKUMEN" type="date" class="form-control" required></div>
 <div class="col-md-6"><label class="required">NOMOR SP2D</label><input name="NOMOR SP2D" class="form-control" required></div>
 <div class="col-md-6"><label class="required">TGL SP2D</label><input name="TGL SP2D" type="date" class="form-control" required></div>
 
-<!-- PENYEDIA -->
 <div class="col-md-6"><label class="required">PIHAK PENYEDIA</label><input name="PIHAK PENYEDIA" class="form-control" required></div>
 <div class="col-md-6"><label class="required">KODE REKENING BELANJA</label><input name="KODE REKENING BELANJA" class="form-control" required></div>
 <div class="col-md-6"><label class="required">NAMA REK BELANJA</label><input name="NAMA REK BELANJA" class="form-control" required></div>
 
-<!-- BARANG -->
 <div class="col-md-6"><label class="required">KODEFIKASI BARANG</label><input name="KODEFIKASI BARANG" class="form-control" required></div>
 <div class="col-md-6"><label class="required">NAMA BARANG</label><input name="NAMA BARANG" class="form-control" required></div>
 <div class="col-md-12"><label class="required">URAIAN BARANG</label><textarea name="URAIAN BARANG" class="form-control" required></textarea></div>
-<div class="col-md-4"><label class="required">SATUAN</label><input name="SATUAN" class="form-control" required></div>
-<div class="col-md-4"><label class="required">JUMLAH BARANG</label><input name="JUMLAH BARANG" type="number" class="form-control" required></div>
-<div class="col-md-4"><label class="required">HARGA SATUAN</label><input name="HARGA SATUAN" class="form-control" required></div>
-<div class="col-md-4"><label class="required">JUMLAH TOTAL</label><input name="JUMLAH TOTAL" class="form-control" readonly></div>
 
-<!-- BAST -->
+<div class="col-md-4"><label class="required">SATUAN</label><input name="SATUAN" class="form-control" required></div>
+<div class="col-md-4"><label class="required">JUMLAH BARANG</label><input name="JUMLAH BARANG" id="jumlah" type="number" class="form-control" required></div>
+<div class="col-md-4"><label class="required">HARGA SATUAN</label><input name="HARGA SATUAN" id="harga" type="number" class="form-control" required></div>
+<div class="col-md-4"><label class="required">JUMLAH TOTAL</label><input name="JUMLAH TOTAL" id="total" class="form-control" readonly></div>
+
 <div class="col-md-4"><label class="required">NO BAST</label><input name="NO BAST" class="form-control" required></div>
 <div class="col-md-4"><label class="required">TGL BAST</label><input name="TGL BAST" type="date" class="form-control" required></div>
 <div class="col-md-4"><label class="required">NO SPV</label><input name="NO SPV" class="form-control" required></div>
 <div class="col-md-4"><label class="required">TGL SPV</label><input name="TGL SPV" type="date" class="form-control" required></div>
 
-<!-- FILE -->
 <div class="col-md-12">
-<label class="required">BUKTI DUKUNG</label>
-<input type="file" name="BUKTI_DUKUNG" class="form-control" required>
+  <label class="required">BUKTI DUKUNG</label>
+  <input type="file" name="BUKTI_DUKUNG" class="form-control" required>
 </div>
 
 <div class="col-12 d-flex gap-2">
-<button class="btn btn-primary" type="submit">Simpan</button>
-<button class="btn btn-secondary" type="reset">Reset</button>
+  <button class="btn btn-primary" type="submit">Simpan</button>
+  <button class="btn btn-secondary" type="reset">Reset</button>
 </div>
 </form>
 
 <div id="status" class="mt-3"></div>
-
 </div>
 </div>
 </div>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrb09SEOtoF7emoZxS3_b_n7XhAp8q2VrBRBFftFc-0iMhjx_e5ESUudi0QOHHMHgC/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzzf7ob0ClX0DNJhza3qw_KeDsvH6tp2jaunXVNCXN5b1K_ekK0uLrAo765Y7ahyfVA/exec";
 
 // hitung total
-const harga = document.querySelector('[name="HARGA SATUAN"]');
-const jumlah = document.querySelector('[name="JUMLAH BARANG"]');
-const total  = document.querySelector('[name="JUMLAH TOTAL"]');
+const harga = document.getElementById("harga");
+const jumlah = document.getElementById("jumlah");
+const total  = document.getElementById("total");
+harga.oninput = jumlah.oninput = ()=> total.value = (harga.value||0)*(jumlah.value||0);
 
-function hitung(){
-  total.value = (Number(jumlah.value)||0) * (Number(harga.value)||0);
+// load SKPD
+async function loadSKPD(){
+  const r = await fetch(SCRIPT_URL+"?action=getSKPD");
+  const j = await r.json();
+  if(j.success) document.getElementById("skpd").value = j.skpd;
 }
-harga.oninput = hitung;
-jumlah.oninput = hitung;
+loadSKPD();
 
-document.getElementById("kk-form").onsubmit = async e => {
+// submit
+document.getElementById("kk-form").onsubmit = async e=>{
   e.preventDefault();
-
-  if (!confirm("Apakah Anda yakin ingin menyimpan data ini?")) {
-    status.innerHTML = `<div class="alert alert-warning">Penyimpanan dibatalkan</div>`;
-    return;
-  }
+  if(!confirm("Apakah Anda yakin ingin menyimpan data ini?")) return;
 
   const fd = new FormData(e.target);
   fd.append("sheet","KERTAS_KERJA");
 
-  status.innerHTML = `<div class="alert alert-info">Menyimpan data...</div>`;
+  status.innerHTML = "Menyimpan...";
+  const r = await fetch(SCRIPT_URL,{method:"POST",body:fd});
+  const j = await r.json();
 
-  try {
-    const r = await fetch(SCRIPT_URL,{ method:"POST", body:fd });
-    const x = await r.json();
+  status.innerHTML = j.success
+    ? `<div class="alert alert-success">✅ Data berhasil disimpan<br>
+       <a href="${j.fileUrl}" target="_blank">📎 Lihat Bukti</a></div>`
+    : `<div class="alert alert-danger">${j.message}</div>`;
 
-    if(x.success){
-      status.innerHTML = `
-        <div class="alert alert-success">
-          ✅ Data berhasil disimpan<br>
-          <a href="${x.fileUrl}" target="_blank">📎 Lihat Bukti Dukung</a>
-        </div>`;
-      e.target.reset();
-    } else {
-      throw new Error(x.message);
-    }
-  } catch(err){
-    status.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
-  }
+  if(j.success) e.target.reset();
 };
 </script>
 </body>
