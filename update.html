@@ -94,40 +94,48 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAGMzy6nIIZaupaEgf6
 const harga = document.querySelector('[name="HARGA SATUAN"]');
 const jumlah = document.querySelector('[name="JUMLAH BARANG"]');
 const total  = document.querySelector('[name="JUMLAH TOTAL"]');
+
 function hitung(){ total.value = (Number(jumlah.value)||0) * (Number(harga.value)||0); }
-harga.oninput = hitung; jumlah.oninput = hitung;
+harga.oninput = hitung;
+jumlah.oninput = hitung;
 
-// Load SKPD
-async function loadSKPD(){
-  const r = await fetch(SCRIPT_URL+"?action=getSKPD");
-  const j = await r.json();
-  if(j.success){
-    const skpdSelect = document.getElementById("skpd");
-    skpdSelect.innerHTML = '<option value="">-- Pilih SKPD --</option>';
-    j.skpdList.forEach(s=>{
-      const opt = document.createElement("option");
-      opt.value = s; opt.text = s;
-      skpdSelect.appendChild(opt);
-    });
-  }
+// Load SKPD dropdown
+async function loadSKPDUnit() {
+  try {
+    const r = await fetch(SCRIPT_URL + "?action=getSKPDUnit");
+    const j = await r.json();
+    if(j.success){
+      const skpdSelect = document.getElementById("skpd");
+      skpdSelect.innerHTML = '<option value="">-- Pilih SKPD --</option>';
+      j.skpdList.forEach(s=>{
+        const opt = document.createElement("option");
+        opt.value = s;
+        opt.text = s;
+        skpdSelect.appendChild(opt);
+      });
+    }
+  } catch(e){ console.log("Gagal load SKPD:", e);}
 }
-loadSKPD();
+loadSKPDUnit();
 
-// Load UNIT saat SKPD dipilih
+// Update UNIT otomatis saat SKPD dipilih
 document.getElementById("skpd").addEventListener("change", async function(){
   const skpd = this.value;
   const unitSelect = document.getElementById("unit");
   unitSelect.innerHTML = '<option value="">-- Pilih UNIT --</option>';
   if(!skpd) return;
-  const r = await fetch(SCRIPT_URL+"?action=getUnit&skpd="+encodeURIComponent(skpd));
-  const j = await r.json();
-  if(j.success){
-    j.units.forEach(u=>{
-      const opt = document.createElement("option");
-      opt.value = u; opt.text = u;
-      unitSelect.appendChild(opt);
-    });
-  }
+  try{
+    const r = await fetch(SCRIPT_URL + "?action=getUnitByKUPB&skpd=" + encodeURIComponent(skpd));
+    const j = await r.json();
+    if(j.success){
+      j.units.forEach(u=>{
+        const opt = document.createElement("option");
+        opt.value = u;
+        opt.text = u;
+        unitSelect.appendChild(opt);
+      });
+    }
+  } catch(e){ console.log("Gagal load UNIT:", e);}
 });
 
 // Submit form
@@ -137,16 +145,24 @@ document.getElementById("kk-form").onsubmit = async e=>{
 
   const fd = new FormData(e.target);
   fd.append("sheet","KERTAS_KERJA");
+
   status.innerHTML = `<div class="alert alert-info">Menyimpan data...</div>`;
 
   try{
     const r = await fetch(SCRIPT_URL,{ method:"POST", body:fd });
     const x = await r.json();
     if(x.success){
-      status.innerHTML = `<div class="alert alert-success">✅ Data berhasil disimpan<br><a href="${x.fileUrl}" target="_blank">📎 Lihat Bukti Dukung</a></div>`;
-      e.target.reset(); total.value = "";
+      status.innerHTML = `
+        <div class="alert alert-success">
+        ✅ Data berhasil disimpan<br>
+        <a href="${x.fileUrl}" target="_blank">📎 Lihat Bukti Dukung</a>
+        </div>`;
+      e.target.reset();
+      total.value = "";
     } else throw new Error(x.message);
-  } catch(err){ status.innerHTML = `<div class="alert alert-danger">${err.message}</div>`; }
+  } catch(err){
+    status.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+  }
 };
 </script>
 </body>
