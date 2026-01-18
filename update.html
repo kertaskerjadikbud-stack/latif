@@ -15,153 +15,117 @@ body { background:#f7fafc }
 <div class="container">
 <div class="card shadow-sm">
 <div class="card-body">
-
 <h4 class="fw-bold mb-2">Form Input KERTAS KERJA</h4>
 <p class="text-muted">Data & bukti dukung tersimpan otomatis</p>
 
 <form id="kk-form" class="row g-3" enctype="multipart/form-data">
+  <!-- IDENTITAS -->
+  <div class="col-md-2"><label class="required">NO</label><input name="NO" type="number" class="form-control" required></div>
+  <div class="col-md-4">
+    <label class="required">SKPD</label>
+    <select name="SKPD" id="skpd" class="form-control" required>
+      <option value="">-- Pilih SKPD --</option>
+    </select>
+  </div>
+  <div class="col-md-4"><label class="required">UNIT</label><input name="UNIT" type="text" class="form-control" required></div>
 
-<!-- IDENTITAS -->
-<div class="col-md-2"><label class="required">NO</label><input name="NO" type="number" class="form-control" required></div>
+  <!-- PROGRAM -->
+  <div class="col-md-6"><label class="required">PROGRAM</label><input name="PROGRAM" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">KEGIATAN</label><input name="KEGIATAN" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">SUB KEGIATAN</label><input name="SUB KEGIATAN" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">JUMLAH TERMIN</label><input name="JUMLAH TERMIN" type="number" class="form-control" required></div>
 
-<div class="col-md-4">
-  <label class="required">SKPD</label>
-  <select name="SKPD" id="skpd" class="form-control" required>
-    <option value="">-- Pilih SKPD --</option>
-  </select>
-</div>
+  <!-- DOKUMEN -->
+  <div class="col-md-6"><label class="required">NAMA PPK</label><input name="NAMA PPK" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">NOMOR DOKUMEN</label><input name="NOMOR DOKUMEN" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">TGL DOKUMEN</label><input name="TGL DOKUMEN" type="date" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">NOMOR SP2D</label><input name="NOMOR SP2D" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">TGL SP2D</label><input name="TGL SP2D" type="date" class="form-control" required></div>
 
-<div class="col-md-4">
-  <label class="required">UNIT</label>
-  <select name="UNIT" id="unit" class="form-control" required>
-    <option value="">-- Pilih UNIT --</option>
-  </select>
-</div>
+  <!-- PENYEDIA -->
+  <div class="col-md-6"><label class="required">PIHAK PENYEDIA</label><input name="PIHAK PENYEDIA" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">KODE REKENING BELANJA</label><input name="KODE REKENING BELANJA" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">NAMA REK BELANJA</label><input name="NAMA REK BELANJA" class="form-control" required></div>
 
-<!-- PROGRAM -->
-<div class="col-md-6"><label class="required">PROGRAM</label><input name="PROGRAM" class="form-control" required></div>
-<div class="col-md-6"><label class="required">KEGIATAN</label><input name="KEGIATAN" class="form-control" required></div>
-<div class="col-md-6"><label class="required">SUB KEGIATAN</label><input name="SUB KEGIATAN" class="form-control" required></div>
-<div class="col-md-6"><label class="required">JUMLAH TERMIN</label><input name="JUMLAH TERMIN" type="number" class="form-control" required></div>
+  <!-- BARANG -->
+  <div class="col-md-6"><label class="required">KODEFIKASI BARANG</label><input name="KODEFIKASI BARANG" class="form-control" required></div>
+  <div class="col-md-6"><label class="required">NAMA BARANG</label><input name="NAMA BARANG" class="form-control" required></div>
+  <div class="col-md-12"><label class="required">URAIAN BARANG</label><textarea name="URAIAN BARANG" class="form-control" required></textarea></div>
+  <div class="col-md-4"><label class="required">SATUAN</label><input name="SATUAN" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">JUMLAH BARANG</label><input name="JUMLAH BARANG" type="number" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">HARGA SATUAN</label><input name="HARGA SATUAN" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">JUMLAH TOTAL</label><input name="JUMLAH TOTAL" class="form-control" readonly></div>
 
-<!-- DOKUMEN -->
-<div class="col-md-6"><label class="required">NAMA PPK</label><input name="NAMA PPK" class="form-control" required></div>
-<div class="col-md-6"><label class="required">NOMOR DOKUMEN</label><input name="NOMOR DOKUMEN" class="form-control" required></div>
-<div class="col-md-6"><label class="required">TGL DOKUMEN</label><input name="TGL DOKUMEN" type="date" class="form-control" required></div>
-<div class="col-md-6"><label class="required">NOMOR SP2D</label><input name="NOMOR SP2D" class="form-control" required></div>
-<div class="col-md-6"><label class="required">TGL SP2D</label><input name="TGL SP2D" type="date" class="form-control" required></div>
+  <!-- BAST -->
+  <div class="col-md-4"><label class="required">NO BAST</label><input name="NO BAST" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">TGL BAST</label><input name="TGL BAST" type="date" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">NO SPV</label><input name="NO SPV" class="form-control" required></div>
+  <div class="col-md-4"><label class="required">TGL SPV</label><input name="TGL SPV" type="date" class="form-control" required></div>
 
-<!-- PENYEDIA -->
-<div class="col-md-6"><label class="required">PIHAK PENYEDIA</label><input name="PIHAK PENYEDIA" class="form-control" required></div>
-<div class="col-md-6"><label class="required">KODE REKENING BELANJA</label><input name="KODE REKENING BELANJA" class="form-control" required></div>
-<div class="col-md-6"><label class="required">NAMA REK BELANJA</label><input name="NAMA REK BELANJA" class="form-control" required></div>
+  <!-- FILE -->
+  <div class="col-md-12">
+    <label class="required">BUKTI DUKUNG</label>
+    <input type="file" name="BUKTI_DUKUNG" class="form-control" required>
+  </div>
 
-<!-- BARANG -->
-<div class="col-md-6"><label class="required">KODEFIKASI BARANG</label><input name="KODEFIKASI BARANG" class="form-control" required></div>
-<div class="col-md-6"><label class="required">NAMA BARANG</label><input name="NAMA BARANG" class="form-control" required></div>
-<div class="col-md-12"><label class="required">URAIAN BARANG</label><textarea name="URAIAN BARANG" class="form-control" required></textarea></div>
-<div class="col-md-4"><label class="required">SATUAN</label><input name="SATUAN" class="form-control" required></div>
-<div class="col-md-4"><label class="required">JUMLAH BARANG</label><input name="JUMLAH BARANG" type="number" class="form-control" required></div>
-<div class="col-md-4"><label class="required">HARGA SATUAN</label><input name="HARGA SATUAN" class="form-control" required></div>
-<div class="col-md-4"><label class="required">JUMLAH TOTAL</label><input name="JUMLAH TOTAL" class="form-control" readonly></div>
-
-<!-- BAST -->
-<div class="col-md-4"><label class="required">NO BAST</label><input name="NO BAST" class="form-control" required></div>
-<div class="col-md-4"><label class="required">TGL BAST</label><input name="TGL BAST" type="date" class="form-control" required></div>
-<div class="col-md-4"><label class="required">NO SPV</label><input name="NO SPV" class="form-control" required></div>
-<div class="col-md-4"><label class="required">TGL SPV</label><input name="TGL SPV" type="date" class="form-control" required></div>
-
-<!-- FILE -->
-<div class="col-md-12">
-<label class="required">BUKTI DUKUNG</label>
-<input type="file" name="BUKTI_DUKUNG" class="form-control" required>
-</div>
-
-<div class="col-12 d-flex gap-2">
-<button class="btn btn-primary" type="submit">Simpan</button>
-<button class="btn btn-secondary" type="reset">Reset</button>
-</div>
-
+  <div class="col-12 d-flex gap-2">
+    <button class="btn btn-primary" type="submit">Simpan</button>
+    <button class="btn btn-secondary" type="reset">Reset</button>
+  </div>
 </form>
-<div id="status" class="mt-3"></div>
 
+<div id="status" class="mt-3"></div>
 </div></div></div>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyAGMzy6nIIZaupaEgf6pKy070onVZg56RQcl8WbslyPTzMvKEHtTsvPRkIBrn6y4qiNA/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjU5-3u_AjzBYIPC4Tj24zsnTn4zKxC-vwvmKbgLxwnNLiuHdPmgqAZwz_5MMjWwi23g/exec";
 
-// Hitung total
+// Total otomatis
 const harga = document.querySelector('[name="HARGA SATUAN"]');
 const jumlah = document.querySelector('[name="JUMLAH BARANG"]');
 const total  = document.querySelector('[name="JUMLAH TOTAL"]');
+function hitung(){ total.value = (Number(jumlah.value)||0)*(Number(harga.value)||0); }
+harga.oninput = hitung; jumlah.oninput = hitung;
 
-function hitung(){ total.value = (Number(jumlah.value)||0) * (Number(harga.value)||0); }
-harga.oninput = hitung;
-jumlah.oninput = hitung;
-
-// Load SKPD dropdown
-async function loadSKPDUnit() {
-  try {
-    const r = await fetch(SCRIPT_URL + "?action=getSKPDUnit");
+// Load SKPD
+async function loadSKPD(){
+  try{
+    const r = await fetch(SCRIPT_URL+"?action=getSKPDUnit");
     const j = await r.json();
     if(j.success){
       const skpdSelect = document.getElementById("skpd");
       skpdSelect.innerHTML = '<option value="">-- Pilih SKPD --</option>';
       j.skpdList.forEach(s=>{
         const opt = document.createElement("option");
-        opt.value = s;
-        opt.text = s;
+        opt.value = s; opt.text = s;
         skpdSelect.appendChild(opt);
       });
     }
-  } catch(e){ console.log("Gagal load SKPD:", e);}
+  }catch(e){ console.log("Gagal load SKPD", e);}
 }
-loadSKPDUnit();
-
-// Update UNIT otomatis saat SKPD dipilih
-document.getElementById("skpd").addEventListener("change", async function(){
-  const skpd = this.value;
-  const unitSelect = document.getElementById("unit");
-  unitSelect.innerHTML = '<option value="">-- Pilih UNIT --</option>';
-  if(!skpd) return;
-  try{
-    const r = await fetch(SCRIPT_URL + "?action=getUnitByKUPB&skpd=" + encodeURIComponent(skpd));
-    const j = await r.json();
-    if(j.success){
-      j.units.forEach(u=>{
-        const opt = document.createElement("option");
-        opt.value = u;
-        opt.text = u;
-        unitSelect.appendChild(opt);
-      });
-    }
-  } catch(e){ console.log("Gagal load UNIT:", e);}
-});
+loadSKPD();
 
 // Submit form
-document.getElementById("kk-form").onsubmit = async e=>{
+document.getElementById("kk-form").onsubmit = async function(e){
   e.preventDefault();
   if(!confirm("Apakah Anda yakin ingin menyimpan data ini?")) return;
 
   const fd = new FormData(e.target);
   fd.append("sheet","KERTAS_KERJA");
-
-  status.innerHTML = `<div class="alert alert-info">Menyimpan data...</div>`;
+  document.getElementById("status").innerHTML='<div class="alert alert-info">Menyimpan data...</div>';
 
   try{
-    const r = await fetch(SCRIPT_URL,{ method:"POST", body:fd });
+    const r = await fetch(SCRIPT_URL, { method: "POST", body: fd });
     const x = await r.json();
     if(x.success){
-      status.innerHTML = `
-        <div class="alert alert-success">
+      document.getElementById("status").innerHTML = `<div class="alert alert-success">
         ✅ Data berhasil disimpan<br>
         <a href="${x.fileUrl}" target="_blank">📎 Lihat Bukti Dukung</a>
-        </div>`;
-      e.target.reset();
-      total.value = "";
+      </div>`;
+      e.target.reset(); total.value="";
     } else throw new Error(x.message);
   } catch(err){
-    status.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+    document.getElementById("status").innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
   }
 };
 </script>
